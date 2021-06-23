@@ -9,10 +9,12 @@
 
 .container h1 {
   color: white;
+  text-shadow: 2px 2px black;
 }
 
 .container h3 {
   color: white;
+  text-shadow: 2px 2px black;
 }
 
 .container p {
@@ -36,6 +38,8 @@
   height: 75px;
 }
 
+.is-hidden { display:none!important }
+
 .main {
   padding: 5rem 0;
   flex: 1;
@@ -48,24 +52,28 @@
 .nav {
   padding: 0 0.5rem;
   display: flex;
-  /* flex-direction: column; */
-  font-size: 1.25rem;
+  flex-direction: column;
+  font-size: 1.2rem;
   justify-content: center;
-  align-items: center;
-  height: 100px;
+  /* align-items: center; */
+  /* height: 150px; */
   /* background-color: #143306; */
+  width: 100%;
 }
 
 .nav a {
-  color: #8a8888;
+  /* color: #8a8888; */
   display: flex;
-  margin: 10px;
+  margin: 20px;
+  justify-content: center;
+  align-items: center;
 }
 
 .nav a:hover, 
 .nav a:focus,
 .nav a:active {
   text-decoration: underline;
+  color: rgb(51, 161, 0);
 
 }
 

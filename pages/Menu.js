@@ -1,9 +1,14 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import useWindowDimensions from "../src/hooks/windowSize";
-import Navbar from "../src/components/navbar";
 import Container from "../src/components/container600";
 import FoodItem from "../src/components/sections/foodItem";
+import dynamic from 'next/dynamic'
+
+const DynamicComponentWithNoSSR = dynamic(
+  () => import("../src/components/navbar"),
+  { ssr: false }
+)
 
 export default function Home() {
   const { width } = useWindowDimensions();
@@ -28,10 +33,10 @@ export default function Home() {
         ></script>
       </Head>
 
-      <Navbar
+      <DynamicComponentWithNoSSR
         width={width}
         page={currentPage}
-        links={["Home", "Menu", "About", "Contact"]}
+        links={["Home", "Menu", "Gallery"]}
       />
 
       <Container
@@ -47,35 +52,39 @@ export default function Home() {
         <h1>Take a look at our menu</h1>
       </Container>
 
-      <FoodItem title={'Formal Buffet #1'} items={[
+      <FoodItem title={'Meats'} items={[
         {
-          name: 'Roast Beef',
-          price: 'Ham'
+          name: 'Pulled Pork',
+          price: 'Pulled Chicken'
         },
         {
-          name: 'Mashed Potatoes w/ Gravy',
-          price: 'Green Beans'
-        },
-        {
-          name: "Mac n' Cheese",
-          price: 'Dinner Roll'
+          name: 'Ribs',
+          price: ''
         }
       ]}/>
       
-      <FoodItem title={'Formal Buffet #2'} items={[
-         {
-          name: 'Roast Beef',
-          price: 'Ham'
+      <FoodItem title={'Sides'} items={[
+        {
+          name: "Mac N Cheese w/ bacon",
+          price: "Mac N Cheese w/ out meat"
         },
         {
-          name: 'Mashed Potatoes w/ Gravy',
-          price: 'Green Beans'
+          name: 'Baked Beans w/ pulled pork',
+          price: 'Baked Beans w/ brisket'
         },
         {
-          name: "Mac n' Cheese",
-          price: 'Dinner Roll'
+          name: 'Baked Beans w/out meat',
+          price: 'Cole Slaw'
+        },
+        {
+          name: 'Potato Salad',
+          price: 'Dinner Rolls'
+        },
+        {
+          name: 'Buns',
+          price: 'Salad'
         }
-
+       
       ]}/>
       
 
